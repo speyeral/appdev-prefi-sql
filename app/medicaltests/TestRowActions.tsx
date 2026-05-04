@@ -5,7 +5,7 @@ import Modal from "@/components/Modal";
 import type { Test, Category, UOM } from "@/types/types";
 
 interface TestRowActionsProps {
-  test: Test;
+  test: Test & { id: any; idcategory: any; iduom: any };
   categories: Category[];
   uoms: UOM[];
   onUpdate: (formData: FormData) => Promise<void>;
@@ -36,7 +36,7 @@ export default function TestRowActions({
   }, []);
 
   const handleDelete = async () => {
-    await onDelete(test.id);
+    await onDelete(parseInt(test.id, 10));
     setShowDelete(false);
   };
 

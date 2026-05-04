@@ -32,7 +32,7 @@ export default function UomRowActions({ uom, onUpdate, onDelete }: UomRowActions
   }, []);
 
   const handleDelete = async () => {
-    const result = await onDelete(uom.id);
+    const result = await onDelete(parseInt(uom.id, 10));
     if (result?.error) {
       alert(result.error);
     }
